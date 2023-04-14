@@ -15,4 +15,8 @@ public class Item {
         this.sellPrice = sellPrice;
     }
 
+    public Map<Item, Integer> getComponents() {
+        return this.components;
+    }
+
 }

@@ -54,16 +54,15 @@ public class ItemReader {
             String nextLine = reader.readLine();
             while (nextLine != null){
                 String[] tokens = nextLine.split(",");
+                String mainItemName = tokens[2];
                 for (int i = 3; i < tokens.length; i++) {
                     String componentString = tokens[i];
                     if (componentString == "") {
                         break;
                     }
-                    int count = 0;
-                    String[] componentCharacters = componentString.split("");
-                    count += Integer.parseInt(componentCharacters[0]) * 100;
-                    count += Integer.parseInt(componentCharacters[1]) * 10;
-                    count += Integer.parseInt(componentCharacters[2]);
+                    int count = Integer.parseInt(componentString.substring(0,3));
+                    String name = componentString.substring(3);
+                    items.get(mainItemName).getComponents().put(items.get(name), count);
                 }
             }
         } catch (Exception e) {}
